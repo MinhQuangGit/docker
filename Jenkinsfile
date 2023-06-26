@@ -8,9 +8,10 @@
         }
         stage('3.Build image') {
             steps {
-               script {
-                 sh "docker build -t spring-boot-docker:spring-docker ."
-                 }
+               withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t minhquang35/docker-hub-rep:v1 .'
+                    sh 'docker push minhquang35/docker-hub-rep:v1'
+               }
              }
          }
     }
