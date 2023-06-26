@@ -1,16 +1,16 @@
  pipeline {
     agent any
     stages {
-        stage('Clone stage') {
-            steps {
-                git 'https://github.com/MinhQuangGit/docker.git'
-            }
+        stage('1.Clone repository') {
+            checkout scm
         }
-        stage('Build stage') {
-            steps {
-                withDockerRegistry(credentialsId: 'docker-hub', url: 'https://hub.docker.com/') {
-                    sh 'docker build -t docker-jenkins/docker-hub-rep:v1 .'
-                    sh 'docker push docker-jenkins/docker-hub-rep:v1 .'
+        stage('2.Maven build') {
+           sh "mvn clean install -e"
+        }
+        stage('3.Build image') {
+            step {
+                script {
+                    sh "docker build -t spring-boot-docker:spring-docker ."
                 }
             }
         }
