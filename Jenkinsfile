@@ -7,7 +7,7 @@
             }
         }
         stage('3.Build image') {
-            step {
+            steps {
                script {
                  sh "docker build -t spring-boot-docker:spring-docker ."
                  }
