@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        maven 'MAVEN_HOME'
-        jdk 'JAVA_HOME'
+        maven 'maven_3_5_0'
+        jdk 'JDK 17'
     }
 	stages {
 	    stage('Clone') {
