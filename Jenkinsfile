@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        maven 'MAVEN_HOME'
+        jdk 'JAVA_HOME'
+    }
 	stages {
 	    stage('Clone') {
             steps {
@@ -7,10 +11,6 @@ pipeline {
             }
         }
   	    stage('Maven Install') {
-  	        tools {
-  	            maven 'Maven 3.5.0'
-  	            jdk 'jdk17'
-  	        }
             steps {
       	        sh 'mvn clean install'
             }
