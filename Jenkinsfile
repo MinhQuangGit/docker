@@ -7,6 +7,10 @@ pipeline {
             }
         }
   	    stage('Maven Install') {
+  	        tools {
+  	            maven 'Maven 3.5.0'
+  	            jdk 'jdk17'
+  	        }
             steps {
       	        sh 'mvn clean install'
             }
