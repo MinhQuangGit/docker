@@ -7,7 +7,7 @@ pipeline {
 	stages {
 	    stage('Clone') {
             steps {
-                git 'https://github.com/MinhQuangGit/docker.git'
+                git branch: 'master', url: 'https://github.com/MinhQuangGit/docker.git'
             }
         }
   	    stage('Maven Install') {
