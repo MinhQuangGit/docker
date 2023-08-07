@@ -12,12 +12,12 @@ pipeline {
         }
   	    stage('Maven Install') {
              steps {
-
              	 sh 'mvn clean install -Dmaven.test.skip=true'
              }
         }
         stage('Docker Build') {
             steps {
+                sh 'docker --version'
       	        sh 'docker build -t minhquang35/spring-docker:latest .'
             }
         }
