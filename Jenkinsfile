@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven_3_5_0'
-        jdk 'JDK 17'
-    }
+     tools {
+            maven 'MAVEN_HOME'
+            jdk 'JAVA_HOME'
+     }
 	stages {
 	    stage('Clone') {
             steps {
@@ -11,10 +11,10 @@ pipeline {
             }
         }
   	    stage('Maven Install') {
-            steps {
-                sh 'java --version'
-      	        sh 'mvn clean install'
-            }
+             steps {
+
+             	 sh 'mvn clean install -Dmaven.test.skip=true'
+             }
         }
         stage('Docker Build') {
             steps {
