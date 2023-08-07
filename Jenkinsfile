@@ -3,6 +3,7 @@ pipeline {
      tools {
             maven 'MAVEN_HOME'
             jdk 'JAVA_HOME'
+            'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
      }
 	stages {
 	    stage('Clone') {
@@ -11,6 +12,11 @@ pipeline {
             }
         }
   	    stage('Maven Install') {
+  	          agent {
+              	docker {
+                	image 'maven:3.5.0'
+                }
+              }
              steps {
              	 sh 'mvn clean install -Dmaven.test.skip=true'
              }
