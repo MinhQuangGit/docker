@@ -1,4 +1,4 @@
 package vn.com.mbbank.payment.model;
 
-public class TransactionRespon {
+public class TransactionResponse {
 }
